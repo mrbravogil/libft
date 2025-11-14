@@ -40,10 +40,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (s2);
 }
 
-int main()
+/*int main()
 {
     char const *s = "Hola holita";
     char *s2 = ft_substr(s, 1, 11);
     printf("%s\n", s2);
     return (0);
-}
+}*/
