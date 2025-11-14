@@ -11,31 +11,27 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
-static void ft_putchar(char c, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-    write(fd, &c, 1);
-}
+	long int	i;
 
-void ft_putnbr_fd(int n, int fd)
-{
-    long int i;
-
-    i = n;
-    if (i == 0)
-        ft_putchar('0', fd);
-    if (i < 0)
-    {
-        ft_putchar('-', fd);
-        i *= -1;
-    }
-    if (i > 9)
-    {
-        ft_putnbr_fd(i % 10, fd);
-        ft_putnbr_fd(i / 10, fd);
-    }
-    else
-    {
-        ft_putchar(i + '0', fd);
-    }
+	i = n;
+	if (i == 0)
+		ft_putchar_fd('0', fd);
+	if (i < 0)
+	{
+		ft_putchar_fd('-', fd);
+		i *= -1;
+	}
+	if (i > 9)
+	{
+		ft_putnbr_fd(i % 10, fd);
+		ft_putnbr_fd(i / 10, fd);
+	}
+	else
+	{
+		ft_putchar_fd(i + '0', fd);
+	}
 }

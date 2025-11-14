@@ -52,8 +52,8 @@ static void	ft_free(char **dest, int i)
 static char	*fill_word(char const *s, char c)
 {
 	char	*word;
-	int     len;
-	int     i;
+	int	len;
+	int	i;
 
 	len = 0;
 	i = 0;
@@ -74,7 +74,7 @@ static char	*fill_word(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**dest;
-	int     i;
+	int	i;
 
 	if (!s)
 		return (NULL);
@@ -91,7 +91,7 @@ char	**ft_split(char const *s, char c)
 			dest[i] = fill_word(s, c);
 			if (!dest[i])
 			{
-				return(ft_free(dest, i - 1), NULL);
+				return (ft_free(dest, i - 1), NULL);
 			}
 			i++;
 			while (*s && *s != c)
