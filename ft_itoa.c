@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
 int	n_count(int n)
 {
@@ -31,15 +30,8 @@ int	n_count(int n)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char	*loop_itoa(char *dest, int len, int num)
 {
-	char		*dest;
-	int		len;
-	long int	num;
-
-	num = n;
-	len = n_count(n);
-	dest = (char *)malloc((len + 1) * sizeof(char));
 	if (!dest)
 		return (0);
 	dest[len] = '\0';
@@ -61,8 +53,21 @@ char	*ft_itoa(int n)
 	return (dest);
 }
 
+char	*ft_itoa(int n)
+{
+	char		*dest;
+	int			len;
+	long int	num;
+
+	num = n;
+	len = n_count(n);
+	dest = (char *)malloc((len + 1) * sizeof(char));
+	loop_itoa(dest, len, num);
+	return (dest);
+}
+
 /*int main()
 {
-    printf("%s\n", ft_itoa(-42));
+    printf("%s\n", ft_itoa(-42555));
     return (0);
 }*/

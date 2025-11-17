@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 static void	make_copy(unsigned char *dst, const unsigned char *src, size_t n)
 {
 	size_t	i;
@@ -41,10 +43,10 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	size_t				i;
 
 	i = 0;
-	cdst = (unsigned char *) dst;
+	cdst = (unsigned char *)dest;
 	csrc = (const unsigned char *) src;
-	if (!dst && !src)
+	if (!dest && !src)
 		return (0);
 	make_copy(cdst, csrc, n);
-	return (dst);
+	return (dest);
 }

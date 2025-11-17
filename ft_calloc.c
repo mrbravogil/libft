@@ -21,7 +21,7 @@ void	*calloc(size_t nmemb, size_t size)
 	ptr = (void *)malloc(nmemb * size);
 	if (!ptr)
 		return (NULL);
-	while (i < count * size)
+	while (i < nmemb * size)
 	{
 		ptr[i] = 0;
 		i++;

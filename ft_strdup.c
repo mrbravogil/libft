@@ -16,13 +16,14 @@
 char	*strdup(const char *s)
 {
 	size_t		len;
-	int		    i;
-	const char	*s2;
+	int			i;
+	char		*s2;
 
 	len = ft_strlen(s);
 	s2 = (char *)malloc(len * sizeof(char));
 	if (!s2)
 		return (NULL);
+	i = 0;
 	while (s[i])
 	{
 		s2[i] = s[i];

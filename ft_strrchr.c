@@ -14,21 +14,21 @@
 
 char	*strrchr(const char *s, int c)
 {
-	const unsigned char	cs;
+	const char			*cs;
 	unsigned char		d;
 	size_t				i;
 
-	cs = (const unsigned char) s;
 	d = (unsigned char) c;
 	i = ft_strlen(cs);
+	cs = (char *) s;
 	if (d == '\0')
-		return (i);
+		return ((char *)i);
 	if (d != '\0')
 	{
 		while (cs[i])
 		{
 			if (cs[i] == d)
-				return (cs[i]);
+				return ((char *)&cs[i]);
 			i--;
 		}
 	}

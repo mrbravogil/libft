@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 static int	count_words(char const *s, char c);
 static void	ft_free(char **dest, int i);
@@ -52,8 +50,8 @@ static void	ft_free(char **dest, int i)
 static char	*fill_word(char const *s, char c)
 {
 	char	*word;
-	int	len;
-	int	i;
+	int		len;
+	int		i;
 
 	len = 0;
 	i = 0;
@@ -71,17 +69,10 @@ static char	*fill_word(char const *s, char c)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char	**loop_dest(char **dest, char const *s, char c, int i)
 {
-	char	**dest;
-	int	i;
-
-	if (!s)
-		return (NULL);
-	dest = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
 	if (!dest)
 		return (NULL);
-	i = 0;
 	while (*s)
 	{
 		while (*s && *s == c)
@@ -99,6 +90,19 @@ char	**ft_split(char const *s, char c)
 		}
 	}
 	dest[i] = NULL;
+	return (dest);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**dest;
+	int		i;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	dest = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
+	loop_dest(dest, s, c, i);
 	return (dest);
 }
 
