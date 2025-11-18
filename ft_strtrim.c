@@ -11,25 +11,17 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	var_init(char const *s1, char *s2, size_t len, size_t i)
-{
-	len = ft_strlen(s1);
-	s2 = (char *)malloc(len + 1 * sizeof(char));
-	i = 0;
-}
+char	*loop_trim(char const *s1, char *s2, char const *set, size_t len);
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*loop_trim(char const *s1, char *s2, char const *set, size_t len)
 {
-	char	*s2;
-	size_t	len;
 	size_t	i;
 	size_t	j;
 
-	var_init(s1, s2, len, i, j);
-	if (!s1 || !s2)
-		return (NULL);
 	j = 0;
+	i = 0;
 	while (i < len)
 	{
 		while (s1[i] == set[i])
@@ -41,6 +33,25 @@ char	*ft_strtrim(char const *s1, char const *set)
 			j++;
 		}
 	}
-	s2[j] = '\0';
+	s2[len] = '\0';
 	return (s2);
 }
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char	*s2;
+	size_t	len;
+
+	len = ft_strlen(s1);
+	s2 = (char *)malloc(len + 1 * sizeof(char));
+	if (!s1 || !s2)
+		return (NULL);
+	loop_trim(s1, s2, set, len);
+	return (s2);
+}
+
+/*int	main()
+{
+	printf("%s\n", ft_strtrim("   hola   ", "   "));
+	return (0);
+}*/

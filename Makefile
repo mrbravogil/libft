@@ -32,9 +32,9 @@ $(NAME): $(OFILES)
 %.o: %.c
 	$(CC) $(FLAGS) $< -o $@
 
-.PHONY : clean fclean all re
+.PHONY: all clean fclean re
 
-all : executable
+all: $(NAME)
 
 # Borra archivos .o
 clean : 
@@ -42,6 +42,6 @@ clean :
 
 # Borra librería creada
 fclean : 
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(OFILES)
 
-re : fclean $(NAME)
+re : fclean all

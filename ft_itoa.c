@@ -12,15 +12,18 @@
 
 #include "libft.h"
 
-int	n_count(int n)
+static int	n_count(long n);
+static char	*loop_itoa(char *dest, int len, long n);
+
+static int	n_count(long n)
 {
-	long int	i;
+	int	i;
 
 	i = 0;
 	if (n <= 0)
 	{
 		i++;
-		n *= -1;
+		n = -n;
 	}
 	while (n > 0)
 	{
@@ -30,44 +33,50 @@ int	n_count(int n)
 	return (i);
 }
 
-char	*loop_itoa(char *dest, int len, int num)
+static char	*loop_itoa(char *dest, int len, long n)
 {
-	if (!dest)
-		return (0);
-	dest[len] = '\0';
-	if (num == 0)
-	{
+	int	i;
+
+	i = len;
+	if (n == 0)
 		dest[0] = '0';
-	}
-	if (num < 0)
+	if (n < 0)
 	{
 		dest[0] = '-';
-		num *= -1;
+		n = -n;
 	}
-	while (num > 0)
+	while (n > 0)
 	{
-		len--;
-		dest[len] = (num % 10) + '0';
-		num /= 10;
+		i--;
+		dest[i] = (n % 10) + '0';
+		n /= 10;
 	}
+	dest[len] = '\0';
 	return (dest);
 }
 
 char	*ft_itoa(int n)
 {
-	char		*dest;
-	int			len;
-	long int	num;
+	char	*dest;
+	int		len;
+	long	num;
 
-	num = n;
-	len = n_count(n);
+	num = (long)n;
+	len = n_count(num);
 	dest = (char *)malloc((len + 1) * sizeof(char));
-	loop_itoa(dest, len, num);
-	return (dest);
+	if (!dest)
+		return (NULL);
+	return (loop_itoa(dest, len, num));
 }
 
-/*int main()
+/*#include <stdio.h>
+#include <limits.h>
+int main(void)
 {
-    printf("%s\n", ft_itoa(-42555));
-    return (0);
+    printf("INT_MIN: %s\n", ft_itoa(INT_MIN));
+    printf("INT_MAX: %s\n", ft_itoa(INT_MAX));
+    printf("0: %s\n", ft_itoa(0));
+    printf("-42: %s\n", ft_itoa(-42));
+    printf("12345: %s\n", ft_itoa(12345));
+    return 0;
 }*/
