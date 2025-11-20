@@ -17,7 +17,6 @@ void	ft_putnbr_fd(int n, int fd)
 	long	i;
 
 	i = n;
-
 	if (i < 0)
 	{
 		ft_putchar_fd('-', fd);

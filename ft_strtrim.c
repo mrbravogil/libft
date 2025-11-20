@@ -11,47 +11,45 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char	*loop_trim(char const *s1, char *s2, char const *set, size_t len);
+static int	in_set(char c, const char *set);
 
-char	*loop_trim(char const *s1, char *s2, char const *set, size_t len)
+static int	in_set(char c, const char *set)
 {
-	size_t	i;
-	size_t	j;
-
-	j = 0;
-	i = 0;
-	while (i < len)
+	while (*set)
 	{
-		while (s1[i] == set[i])
-			i++;
-		while (s1[i] != set[i])
-		{
-			s2[j] = s1[i];
-			i++;
-			j++;
-		}
+		if (c == *set)
+			return (1);
+		set++;
 	}
-	s2[len] = '\0';
-	return (s2);
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*s2;
-	size_t	len;
+	size_t	end;
+	size_t	start;
 
-	len = ft_strlen(s1);
-	s2 = (char *)malloc(len + 1 * sizeof(char));
-	if (!s1 || !s2)
+	if (!s1 || !set)
 		return (NULL);
-	loop_trim(s1, s2, set, len);
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && in_set(s1[start], set))
+		start++;
+	while (end > start && in_set(s1[end -1], set))
+		end--;
+	s2 = (char *)malloc((end - start + 1) * sizeof(char));
+	if (!s2)
+		return (NULL);
+	ft_memcpy(s2, s1 + start, end - start);
+	s2[end - start] = '\0';
 	return (s2);
 }
 
-/*int	main()
+/*#include <stdio.h>
+int	main()
 {
-	printf("%s\n", ft_strtrim("   hola   ", "   "));
+	printf("%s\n", ft_strtrim("xyxyHola!yxxx", "xy"));
 	return (0);
 }*/

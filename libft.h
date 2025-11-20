@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
+# include "libft.h"
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
