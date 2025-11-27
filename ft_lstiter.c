@@ -1,16 +1,13 @@
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+void ft_lstiter(t_list *lst, void (*f)(void *))
 {
     t_list  *tmp;
-    int i;
 
     tmp = lst;
-    i = 0;
-    while(tmp)
+    while (tmp)
     {
+        f(tmp->content);
         tmp = tmp->next;
-        i++;
     }
-    return (i);
 }
