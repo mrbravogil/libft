@@ -38,3 +38,9 @@ int	ft_atoi(const char *nptr)
 	}
 	return (s * r);
 }
+
+/*int	main()
+{
+	printf("%d\n", ft_atoi("-+42"));
+	return (0);
+}*/

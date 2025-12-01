@@ -24,3 +24,9 @@ void	ft_putendl_fd(char *s, int fd)
 	}
 	write(fd, "\n", 1);
 }
+/*int main()
+{
+	char str[] = "Hola holita";
+	ft_putendl_fd(str, 1);
+	return (0);
+}*/

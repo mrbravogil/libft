@@ -96,14 +96,17 @@ char	**loop_dest(char **dest, char const *s, char c, int i)
 char	**ft_split(char const *s, char c)
 {
 	char	**dest;
+	char	**tmp;
 	int		i;
 
 	i = 0;
 	if (!s)
 		return (NULL);
 	dest = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
-	loop_dest(dest, s, c, i);
-	return (dest);
+	if (!dest)
+		return (NULL);
+	tmp = loop_dest(dest, s, c, i);
+	return (tmp);
 }
 
 /*int	main()

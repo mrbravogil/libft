@@ -1,43 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabravo- <mabravo-@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/11 15:19:33 by mabravo-          #+#    #+#             */
-/*   Updated: 2025/11/11 15:19:37 by mabravo-         ###   ########.fr       */
+/*   Created: 2025/12/01 10:47:22 by mabravo-          #+#    #+#             */
+/*   Updated: 2025/12/01 10:47:25 by mabravo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+int	ft_lstsize(t_list *lst)
 {
-	unsigned char	*ptr;
-	size_t			i;
+	t_list	*tmp;
+	int		i;
 
+	tmp = lst;
 	i = 0;
-	ptr = (unsigned char *) s;
-	while (i < n)
+	while (tmp)
 	{
-		((unsigned char *)ptr)[i] = (unsigned char)c;
+		tmp = tmp->next;
 		i++;
 	}
-	return (ptr);
+	return (i);
 }
 
 /*int main(void)
 {
-	char buf1[32] = "Hello, World!";
-	char buf2[32] = "Hello, World!";
+    t_list *lista;
+    t_list *n1;
+    t_list *n2;
+    t_list *n3;
+    int	i;
 
-	printf("Antes: buf1=\"%s\", buf2=\"%s\"\n", buf1, buf2);
+    lista = NULL;
+    n1 = ft_lstnew("Hola");
+    n2 = ft_lstnew("Qué tal");
+    n3 = ft_lstnew("Adios");
 
-	ft_memset(buf1 + 7, 'X', 5);
-	memset(buf2 + 7, 'X', 5);
+    lista = n1;
+    n1->next = n2;   
+    n2->next = n3;
 
-	printf("Después:  buf1=\"%s\", buf2=\"%s\"\n", buf1, buf2);
+	i = ft_lstsize(lista);	
 
-	return (0);
+    printf("El contador de la lista es: %d\n", i);
+
+    return 0;
 }*/
