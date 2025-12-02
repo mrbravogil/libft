@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
@@ -20,11 +19,10 @@ void	ft_bzero(void *s, size_t n)
 
 	tmp_ptr = (char *)s;
 	i = 0;
-	while (n > 0)
+	while (n > i)
 	{
 		tmp_ptr[i] = '\0';
 		i++;
-		n--;
 	}
 }
 

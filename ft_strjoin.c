@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
 
 char	*loop_join(char const *s1, char const *s2, char *s3);
 

@@ -15,6 +15,7 @@
 static int	count_words(char const *s, char c);
 static void	ft_free(char **dest, int i);
 static char	*fill_word(char const *s, char c);
+static char	**loop_dest(char **dest, char const *s, char c, int i);
 
 static int	count_words(char const *s, char c)
 {
@@ -69,7 +70,7 @@ static char	*fill_word(char const *s, char c)
 	return (word);
 }
 
-char	**loop_dest(char **dest, char const *s, char c, int i)
+static char	**loop_dest(char **dest, char const *s, char c, int i)
 {
 	if (!dest)
 		return (NULL);
