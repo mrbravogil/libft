@@ -1,49 +1,32 @@
 
 #include "libft.h"
 
-char	*loop_join(char const *s1, char const *s2, char *s3);
-
-char	*loop_join(char const *s1, char const *s2, char *s3)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	char	*s3;
 	int	i;
 	int	j;
 
-	i = 0;
 	j = 0;
-	while (s1[i])
+	if (!s1 || !s2)
+		return (0);
+	s3 = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!s3)
+		return (0);
+	while (*s1)
 	{
-		s3[j++] = s1[i++];
+		s3[j++] = *s1++;
 	}
-	i = 0;
-	while (s2[i])
+	while (*s2)
 	{
-		s3[j++] = s2[i++];
+		s3[j++] = *s2++;
 	}
 	s3[j] = '\0';
 	return (s3);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*s3;
-	size_t	len;
-	size_t	len2;
-	size_t	total;
-
-	if (!s1 || !s2)
-		return (0);
-	len = ft_strlen(s1);
-	len2 = ft_strlen (s2);
-	total = len + len2 + 1;
-	s3 = (char *)malloc((total) * sizeof(char));
-	if (!s3)
-		return (0);
-	loop_join(s1, s2, s3);
-	return (s3);
-}
-
-/*int	main()
+int	main()
 {
 	printf("%s\n", ft_strjoin("hola   ", "que tal"));
 	return (0);
-}*/
+}
