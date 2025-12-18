@@ -4,7 +4,6 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*s3;
-	int	i;
 	int	j;
 
 	j = 0;
@@ -25,8 +24,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (s3);
 }
 
-int	main()
+/*int	main()
 {
 	printf("%s\n", ft_strjoin("hola   ", "que tal"));
 	return (0);
-}
+}*/
